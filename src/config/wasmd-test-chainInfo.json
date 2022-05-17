@@ -1,0 +1,14 @@
+{
+    "rpc": "http://localhost:26657",
+    "chainName": "wasm-1",
+    "bech32prefix": "wasm",
+    "feeToken": "stake",
+    "faucetUrl": "https://faucet.cliffnet.cosmwasm.com/credit",
+    "hdPath": "m/44'/118'/0'/0/0",
+    "fees": {
+      "upload": "7000000",
+      "init": "500000",
+      "exec": "200000"
+    }, 
+    "gasPrice": "0.025ucosm"
+  }
