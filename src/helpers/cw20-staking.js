@@ -45,7 +45,7 @@ const CW20Staking = (client, chainInfo) => {
       return result.transactionHash;
     };
 
-    // _BondAllTokens can only be called by the contract itself, after all rewards have been withdrawn. This is an example of using \"callbacks\" in message flows. This can only be invoked by the contract itself as a return from Reinvest
+    // BondAllTokens can only be called by the contract itself, after all rewards have been withdrawn. This is an example of using \"callbacks\" in message flows. This can only be invoked by the contract itself as a return from Reinvest
     const _BondAllTokens = async (funds) => {
       const fee = calculateFee(chainInfo.fees.exec, chainInfo.gasPrice);
       const result = await client.execute(

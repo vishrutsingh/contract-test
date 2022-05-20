@@ -1,7 +1,7 @@
 const axios = require("axios");
 const { SigningCosmWasmClient, Secp256k1HdWallet } = require("cosmwasm");
 
-const useOptions = (chainInfo, mnemonic) => {
+const wasm = (chainInfo, mnemonic) => {
   const CreateWallet = async (chainInfo, mnemonic) => {
     // generate if no file exists
     return await Secp256k1HdWallet.fromMnemonic(mnemonic, {
@@ -39,4 +39,4 @@ const useOptions = (chainInfo, mnemonic) => {
   return { setup };
 };
 
-module.exports = { useOptions };
+module.exports = { wasm };

@@ -8,7 +8,7 @@
     "fees": {
       "upload": "7000000",
       "init": "500000",
-      "exec": "200000"
+      "exec": 200000
     },
     "gasPrice": "0.025upebble"
-  }
+}

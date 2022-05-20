@@ -1,6 +1,6 @@
 const axios = require("axios");
-const chainInfo = require("./config/wasmd-test-chain-info.json");
-const { useOptions } = require("./helpers/base");
+const chainInfo = require("./config/cliffnet-chainInfo.json");
+const { wasm } = require("./helpers/base");
 const { CW20 } = require("./helpers/cw20");
 const { CW20Staking } = require("./helpers/cw20-staking");
 const { sha256 } = require( "@cosmjs/crypto");
@@ -40,42 +40,44 @@ const mnemonic = "rifle same bitter control garage duck grab spare mountain doct
 async function cw20_base() {
   //Setup
   const vishrut= "wasm1vw0gf8uc000h72qxzkdrx2x2u8zzj0ppfq02gd"
-  const [address, client] = await useOptions(chainInfo, mnemonic).setup();
+  const [address, client] = await wasm(chainInfo, mnemonic).setup();
+  console.log(address);
   const cw20 = CW20(client, chainInfo);
-  console.log(await client.getBalance(address, "native"))
+  // console.log(await client.getBalance(vishrut, "native"))
 
   // Upload Code
   // const codeId = await cw20.upload(address);
   // console.log(codeId);
-  // const contracts = await client.getContracts(954);
+  // const contracts = await client.getContracts(codeId);
+  // console.log(contracts)
 
-  // Initialization wasm1f88ttw9furkuwxmrdhxfa7wr4qk0sn4ujprel6np9wddkszc8nwqjlk4kc
+  // Initialization wasm14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s0phg4d, wasm10qkxr5cwgp4mcmtrfpj4a67h36u7xptgypl0krqj0gvngzntvugq4cxuyn
   // const initMsg = {
-  //   name: "Native",
-  //   symbol: "NATIVE",
+  //   name: "test",
+  //   symbol: "TEST",
   //   decimals: 2,
   //   // list of all validator self-delegate addresses - 100 STARs each!
   //   initial_balances: [
-  //     {address: "wasm1vw0gf8uc000h72qxzkdrx2x2u8zzj0ppfq02gd", amount: "10000"},
-  //     {address: "wasm1ppgpwep3yzh8w3d89xlzlens3420j5vs5q3p4j", amount: "10000"},
-  //     {address: "wasm1fnx5jzqsdkntlq2nspjgswtezf45u5ug3kq9sw", amount: "10000"},
+  //     {address: "wasm1vw0gf8uc000h72qxzkdrx2x2u8zzj0ppfq02gd", amount: "100000000"},
+  //     {address: "wasm1ppgpwep3yzh8w3d89xlzlens3420j5vs5q3p4j", amount: "100000000"},
+  //     {address: "wasm1fnx5jzqsdkntlq2nspjgswtezf45u5ug3kq9sw", amount: "100000000"},
   //   ],
   //   mint: {
   //     minter: address,
   //   },
   // };
-  // const contract = await cw20.instantiate(address, 954, initMsg, "PNATIVE");
+  // const contract = await cw20.instantiate(address, 1237, initMsg, "test2");
   // console.log(`Contract: ${contract.contractAddress}`);
 
   //Query
-  // const contractAddress = "wasm1f88ttw9furkuwxmrdhxfa7wr4qk0sn4ujprel6np9wddkszc8nwqjlk4kc";
-  // const native = cw20.use(contractAddress);
-  // console.log(await native.balance(address));
+  const contractAddress = "wasm10qkxr5cwgp4mcmtrfpj4a67h36u7xptgypl0krqj0gvngzntvugq4cxuyn";
+  const native = cw20.use(contractAddress);
+  console.log(await native.balance('wasm1ppgpwep3yzh8w3d89xlzlens3420j5vs5q3p4j'));
   // console.log(await native.tokenInfo());
   // console.log(await native.minter());
 
   //Execute
-
+  console.log(await native.transfer(vishrut, 'wasm1ppgpwep3yzh8w3d89xlzlens3420j5vs5q3p4j', "200"))
 }
 
 
@@ -91,7 +93,7 @@ async function cw20_staking() {
   // const contracts = await client.getContracts(961);
 
 
-  // // Initialization wasm1vsr22qjr4n28mxgv28ek95ln0xgs5ckzv6qcmjszl937emw7k4kqrazgl5
+  // // Initialization wasm14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s0phg4d
   // const initMsg = {
   //   name: "Native Staking",
   //   symbol: "STK",
